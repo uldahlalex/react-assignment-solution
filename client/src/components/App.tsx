@@ -7,6 +7,7 @@ import Navigation from "./Navigation.tsx";
 import {useAtom} from "jotai";
 import {ThemeAtom} from "../atoms/ThemeAtom.tsx";
 import useInitializeData from "./useInitializeData.ts";
+import PatientsList from "./PatientsList.tsx";
 
 
 const App = () => {
@@ -19,6 +20,8 @@ const App = () => {
             <Toaster/>
             <Routes>
                 <Route path="/" element={<Home/>}/>
+                <Route path="/patients" element={<PatientsList/>}/>
+                <Route path="/patients/:id" element={<PatientsList/>}/>
             </Routes>
             <DevTools />
 

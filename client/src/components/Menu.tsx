@@ -1,5 +1,8 @@
+import {useNavigate} from "react-router-dom";
+
 export default function Menu() {
 
+    const navigate = useNavigate();
 
     return(
         <>
@@ -21,9 +24,9 @@ export default function Menu() {
             <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                <li><a>Homepage</a></li>
-                <li><a>Portfolio</a></li>
-                <li><a>About</a></li>
+                <li><a onClick={() => navigate('/patients')}>Patients</a></li>
+                <li><a onClick={() => navigate('/diseases')}>Diseases</a></li>
+                <li><a onClick={() => navigate('/diagnoses')}>Diagnoses</a></li>
             </ul>
         </div>
 </>
