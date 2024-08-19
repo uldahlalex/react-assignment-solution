@@ -32,9 +32,9 @@ export default function EnrollPatientModal() {
                 <button className="btn btn-primary" onClick={() => {
                     // @ts-ignore
                     http.patients.patientsCreate({name: newPatient, id: undefined}).then((result) => {
-                        const resultData = result.data as unknown as Patients;
+
                         setNewPatient("");
-                        setPatients([...patients, resultData[0]]);
+                        setPatients([...patients, result.data[0]]);
                     })
                     const closed = {...modalController, modalOpen: false};
                     setModalController(closed);
