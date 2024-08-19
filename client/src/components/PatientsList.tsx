@@ -12,8 +12,7 @@ export default function PatientsList() {
         <ul>
             {patients.map((patient) => {
                 return <>
-                    <div className="card">
-                    {/*    DaisyUI card for patient*/}
+                    <div key={patient.id} className="card">
                         <div className="card-body bg-base-200">
                             <h2 className="card-title">{patient.name}</h2>
                             <button onClick={() => navigate('/patients/'+patient.id)} className="btn btn-primary">See details</button>

@@ -42,7 +42,7 @@ docker-compose up
 # Requirements
 
 ## Minimum requirements (FULL crud for single entity):
-- It should be possible to get an overview of all patients when navigating to /patients
+- ✅ It should be possible to get an overview of all patients when navigating to /patients
 - It should be possible to get all data for a singular patient when navigating to /patients/:id where ID is the patient ID
 - It should be possible to enroll a new patient (create)
 - It should be possible to delete a patient
