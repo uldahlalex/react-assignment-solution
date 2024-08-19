@@ -42,11 +42,13 @@ docker-compose up
 # Requirements
 
 ## Minimum requirements (FULL crud for single entity):
-- ✅ It should be possible to get an overview of all patients when navigating to /patIt should be possible to get all data for a singular patient when navigating to /patients/:id where ID is the patient ID
-- Check: It should be possible to enroll a new patient (create)
-- It should be possible to delete a patient
-- It should be possible to update a patient
-- The client application should be deployed to Firebase. If the backend is running locally, opening the deployment locally should still work.
+- ✅ It should be possible to get an overview of all patients when navigating to /patients.
+- Check: It should be possible get all data for a singular patient when navigating to /patients/:id where ID is the patient ID
+- It should be possible to enroll a new patient (create)
+- Check: It should be possible to delete a patient
+- It should be possible to change the name of a patient
+- It should be possible to add new diagnoses to a patient
+- The client application should be deployed to Firebase. If the backend is running locally, opening the deployment should still work with the local backend.
 
 ## Bonus requirements
 - It should be possible to create a new disease which patients may be diagnosed with

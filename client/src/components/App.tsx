@@ -15,7 +15,7 @@ const App = () => {
 
     useInitializeData();
 
-    return (<>
+    return (<div >
 
             <Navigation />
             <Toaster/>
@@ -26,6 +26,6 @@ const App = () => {
             </Routes>
             <DevTools />
 
-    </>)
+    </div>)
 }
 export default App;

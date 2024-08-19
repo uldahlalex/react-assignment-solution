@@ -1,0 +1,47 @@
+import {atom, useAtom} from "jotai";
+import {useState} from "react";
+import {http} from "../http.ts";
+import {PatientsAtom} from "../atoms/PatientsAtom.tsx";
+import {AxiosResponse} from "axios";
+import {Patients} from "../Api.ts";
+
+export interface ModalControllerForm {
+    modalOpen: boolean;
+}
+export const EnrollPatientModalAtom = atom<ModalControllerForm>({modalOpen: false});
+
+
+export default function EnrollPatientModal() {
+
+    const [modalController, setModalController] = useAtom(EnrollPatientModalAtom);
+    const [patients, setPatients] = useAtom(PatientsAtom);
+    const [newPatient, setNewPatient] = useState("");
+
+    if(!modalController.modalOpen) return null;
+
+    return <div className="modal modal-open">
+        <div className="modal-box">
+            <h3 className="font-bold text-lg">Confirm?</h3>
+            <input value={newPatient} onChange={e => setNewPatient(e.target.value)} placeholder="New patient name" />
+            <div className="modal-action">
+                <button className="btn btn-outline" onClick={() => {
+                    const closed = {...modalController, modalOpen: false};
+                    setModalController(closed);
+                }}>Cancel
+                </button>
+                <button className="btn btn-primary" onClick={() => {
+                    // @ts-ignore
+                    http.patients.patientsCreate({name: newPatient, id: undefined}).then((result) => {
+                        const resultData = result.data as unknown as Patients;
+                        setNewPatient("");
+                        setPatients([...patients, resultData[0]]);
+                    })
+                    const closed = {...modalController, modalOpen: false};
+                    setModalController(closed);
+
+                }}>Confirm and close
+                </button>
+            </div>
+        </div>
+    </div>
+}
