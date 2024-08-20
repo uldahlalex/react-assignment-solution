@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 import {RouteParams} from "../models/RouteParams.ts";
 import {Diagnoses, Patients} from "../Api.ts";
 import {DiagnoseWithDisease, PatientWithDetails} from "../models/CompoundModels.tsx";
-import {http} from "../http.ts";
+import {apiClient} from "../apiClient.ts";
 import toast from "react-hot-toast";
 
 export default function PatientDetail() {
@@ -45,7 +45,7 @@ export default function PatientDetail() {
                             <h2 className="card-title">The {new Date(d?.diagnosis_date!).toLocaleDateString()}</h2>
                         </div>
                         <button className="btn btn-error" onClick={() => {
-                            http.patients.patientsDelete({id: 'eq.'+currentPatient?.id}).then(() => {
+                            apiClient.patients.patientsDelete({id: 'eq.'+currentPatient?.id}).then(() => {
                                 setPatients(patients.filter(p => p.id != currentPatient.id));
                                 setDiagnoses(diagnoses.filter(d => d.patient_id != currentPatient.id));
                                 setDiseases(diseases.filter(d => d.id != currentPatient.id));

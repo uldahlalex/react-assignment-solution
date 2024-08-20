@@ -1,6 +1,6 @@
 import {atom, useAtom} from "jotai";
 import {useState} from "react";
-import {http} from "../http.ts";
+import {apiClient} from "../apiClient.ts";
 import {PatientsAtom} from "../atoms/PatientsAtom.tsx";
 import {AxiosResponse} from "axios";
 import {Patients} from "../Api.ts";
@@ -30,7 +30,7 @@ export default function EnrollPatientModal() {
                 }}>Cancel
                 </button>
                 <button className="btn btn-primary" onClick={() => {
-                    http.patients.patientsCreate({name: newPatient}).then((result) => {
+                    apiClient.patients.patientsCreate({name: newPatient}).then((result) => {
                         setNewPatient("");
                         setPatients([...patients, result.data[0]]);
                     })

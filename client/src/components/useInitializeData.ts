@@ -1,7 +1,7 @@
 import {useAtom} from "jotai/index";
 import {Diagnoses, Diseases, Patients} from "../Api.ts";
 import {useEffect} from "react";
-import {http} from "../http.ts";
+import {apiClient} from "../apiClient.ts";
 import {AxiosResponse} from "axios";
 import {PatientsAtom} from "../atoms/PatientsAtom.tsx";
 import {DiagnosesAtom} from "../atoms/DiagnosesAtom.tsx";
@@ -15,13 +15,13 @@ export default function useInitializeData() {
     const [theme, setTheme] = useAtom(ThemeAtom);
 
     useEffect(() => {
-        http.patients.patientsList().then((result: AxiosResponse<Patients[]>) => {
+        apiClient.patients.patientsList().then((result: AxiosResponse<Patients[]>) => {
             setPatients(result.data);
         })
-        http.diagnoses.diagnosesList().then((result: AxiosResponse<Diagnoses[]>) => {
+        apiClient.diagnoses.diagnosesList().then((result: AxiosResponse<Diagnoses[]>) => {
             setDiagnoses(result.data);
         });
-        http.diseases.diseasesList().then((result: AxiosResponse<Diseases[]>) => {
+        apiClient.diseases.diseasesList().then((result: AxiosResponse<Diseases[]>) => {
             setDisease(result.data);
         });
 

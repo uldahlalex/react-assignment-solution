@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {http} from "../http.ts";
+import {apiClient} from "../apiClient.ts";
 import {AxiosResponse} from "axios";
 import {Patients} from "../Api.ts";
 import {useAtom} from "jotai";
