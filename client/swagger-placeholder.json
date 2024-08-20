@@ -91,10 +91,15 @@
       },
       "post": {
         "parameters": [
-          { "$ref": "#/parameters/body.diseases" },
-          { "$ref": "#/parameters/select" },
-          { "$ref": "#/parameters/preferReturnFull" }
-
+          {
+            "$ref": "#/parameters/body.diseases"
+          },
+          {
+            "$ref": "#/parameters/select"
+          },
+          {
+            "$ref": "#/parameters/preferPost"
+          }
         ],
         "responses": {
           "201": {
@@ -104,7 +109,9 @@
             }
           }
         },
-        "tags": ["diseases"]
+        "tags": [
+          "diseases"
+        ]
       },
       "delete": {
         "parameters": [
@@ -215,18 +222,16 @@
           {
             "$ref": "#/parameters/select"
           },
-          { "$ref": "#/parameters/preferReturnFull" }
-
+          {
+            "$ref": "#/parameters/preferPost"
+          }
         ],
         "responses": {
           "201": {
+            "description": "Created",
             "schema": {
-                "items": {
-                    "$ref": "#/definitions/diagnoses"
-                },
-                "type": "array"
-            },
-            "description": "Created"
+              "$ref": "#/definitions/diagnoses"
+            }
           }
         },
         "tags": [
@@ -348,18 +353,16 @@
           {
             "$ref": "#/parameters/select"
           },
-          { "$ref": "#/parameters/preferReturnFull" }
-
+          {
+            "$ref": "#/parameters/preferPost"
+          }
         ],
         "responses": {
           "201": {
+            "description": "Created",
             "schema": {
-                "items": {
-                    "$ref": "#/definitions/patients"
-                },
-                "type": "array"
-            },
-            "description": "Created"
+              "$ref": "#/definitions/patients"
+            }
           }
         },
         "tags": [
@@ -403,7 +406,6 @@
           }
         ],
         "responses": {
-
           "204": {
             "description": "No Content"
           }
@@ -435,7 +437,6 @@
     },
     "diagnoses": {
       "required": [
-        "id",
         "patient_id",
         "disease_id"
       ],
@@ -465,7 +466,6 @@
     },
     "patients": {
       "required": [
-        "id",
         "name"
       ],
       "properties": {
@@ -496,19 +496,15 @@
     },
     "preferReturn": {
       "name": "Prefer",
-      "in": "header",
-      "description": "Preference for response after a DELETE operation",
+      "description": "Preference",
       "required": false,
-      "type": "string",
-      "enum": ["return=representation", "return=minimal", "return=none"]
-    },
-    "preferReturnFull": {
-      "name": "Prefer",
+      "enum": [
+        "return=representation",
+        "return=minimal",
+        "return=none"
+      ],
       "in": "header",
-      "description": "Ensure full entity return on POST",
-      "required": false,
-      "type": "string",
-      "default": "return=representation"
+      "type": "string"
     },
     "preferCount": {
       "name": "Prefer",
@@ -525,11 +521,7 @@
       "description": "Preference",
       "required": false,
       "enum": [
-        "return=representation",
-        "return=minimal",
-        "return=none",
-        "resolution=ignore-duplicates",
-        "resolution=merge-duplicates"
+        "return=representation"
       ],
       "in": "header",
       "type": "string"
@@ -590,7 +582,13 @@
       "required": false,
       "in": "body",
       "schema": {
-        "$ref": "#/definitions/diseases"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": ["name"]
       }
     },
     "rowFilter.diseases.id": {
@@ -611,7 +609,20 @@
       "required": false,
       "in": "body",
       "schema": {
-        "$ref": "#/definitions/diagnoses"
+        "type": "object",
+        "properties": {
+          "patient_id": {
+            "type": "integer"
+          },
+          "disease_id": {
+            "type": "integer"
+          },
+          "diagnosis_date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": ["patient_id", "disease_id"]
       }
     },
     "rowFilter.diagnoses.id": {
@@ -644,7 +655,13 @@
       "required": false,
       "in": "body",
       "schema": {
-        "$ref": "#/definitions/patients"
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          }
+        },
+        "required": ["name"]
       }
     },
     "rowFilter.patients.id": {

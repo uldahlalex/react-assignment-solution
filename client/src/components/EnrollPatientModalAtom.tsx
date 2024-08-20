@@ -30,9 +30,7 @@ export default function EnrollPatientModal() {
                 }}>Cancel
                 </button>
                 <button className="btn btn-primary" onClick={() => {
-                    // @ts-ignore
-                    http.patients.patientsCreate({name: newPatient, id: undefined}).then((result) => {
-
+                    http.patients.patientsCreate({name: newPatient}).then((result) => {
                         setNewPatient("");
                         setPatients([...patients, result.data[0]]);
                     })

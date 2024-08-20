@@ -15,7 +15,7 @@ export interface Diseases {
    * This is a Primary Key.<pk/>
    * @format integer
    */
-  id: number;
+  id?: number;
   /**
    * @format character varying
    * @maxLength 255
@@ -29,7 +29,7 @@ export interface Diagnoses {
    * This is a Primary Key.<pk/>
    * @format integer
    */
-  id: number;
+  id?: number;
   /**
    * Note:
    * This is a Foreign Key to `patients.id`.<fk table='patients' column='id'/>
@@ -55,7 +55,7 @@ export interface Patients {
    * This is a Primary Key.<pk/>
    * @format integer
    */
-  id: number;
+  id?: number;
   /**
    * @format character varying
    * @maxLength 255
@@ -258,14 +258,16 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request POST:/diseases
      */
     diseasesCreate: (
-      diseases: Diseases,
+      diseases: {
+        name: string;
+      },
       query?: {
         /** Filtering Columns */
         select?: string;
       },
       params: RequestParams = {},
     ) =>
-      this.request<Diseases[], any>({
+      this.request<Diseases, any>({
         path: `/diseases`,
         method: "POST",
         query: query,
@@ -303,7 +305,9 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request PATCH:/diseases
      */
     diseasesPartialUpdate: (
-      diseases: Diseases,
+      diseases: {
+        name: string;
+      },
       query?: {
         id?: string;
         name?: string;
@@ -359,14 +363,19 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request POST:/diagnoses
      */
     diagnosesCreate: (
-      diagnoses: Diagnoses,
+      diagnoses: {
+        patient_id: number;
+        disease_id: number;
+        /** @format date-time */
+        diagnosis_date?: string;
+      },
       query?: {
         /** Filtering Columns */
         select?: string;
       },
       params: RequestParams = {},
     ) =>
-      this.request<Diagnoses[], any>({
+      this.request<Diagnoses, any>({
         path: `/diagnoses`,
         method: "POST",
         query: query,
@@ -406,7 +415,12 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request PATCH:/diagnoses
      */
     diagnosesPartialUpdate: (
-      diagnoses: Diagnoses,
+      diagnoses: {
+        patient_id: number;
+        disease_id: number;
+        /** @format date-time */
+        diagnosis_date?: string;
+      },
       query?: {
         id?: string;
         patient_id?: string;
@@ -462,14 +476,16 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request POST:/patients
      */
     patientsCreate: (
-      patients: Patients,
+      patients: {
+        name: string;
+      },
       query?: {
         /** Filtering Columns */
         select?: string;
       },
       params: RequestParams = {},
     ) =>
-      this.request<Patients[], any>({
+      this.request<Patients, any>({
         path: `/patients`,
         method: "POST",
         query: query,
@@ -507,7 +523,9 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
      * @request PATCH:/patients
      */
     patientsPartialUpdate: (
-      patients: Patients,
+      patients: {
+        name: string;
+      },
       query?: {
         id?: string;
         name?: string;
