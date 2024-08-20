@@ -1,9 +1,9 @@
-import {apiClient} from "../apiClient.ts";
+import {apiClient} from "../../../apiClient.ts";
 import toast from "react-hot-toast";
 import React, {useState} from "react";
 import {useAtom} from "jotai";
-import {PatientsAtom} from "../atoms/PatientsAtom.tsx";
-import {Patients} from "../Api.ts";
+import {PatientsAtom} from "../../../atoms/PatientsAtom.tsx";
+import {Patients} from "../../../Api.ts";
 
 export default function UpdatePatientName({currentPatient}: {currentPatient: Patients}) {
 

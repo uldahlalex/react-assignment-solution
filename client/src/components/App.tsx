@@ -7,8 +7,8 @@ import Navigation from "./Navigation.tsx";
 import {useAtom} from "jotai";
 import {ThemeAtom} from "../atoms/ThemeAtom.tsx";
 import useInitializeData from "./useInitializeData.ts";
-import PatientsList from "./PatientsList.tsx";
-import PatientDetail from "./PatientDetail.tsx";
+import PatientsList from "./Patients/PatientsList.tsx";
+import PatientDetail from "./Patients/PatientDetail/PatientDetail.tsx";
 
 
 const App = () => {

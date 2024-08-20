@@ -1,8 +1,8 @@
-import {Diagnoses, Patients} from "../Api.ts";
+import {Diagnoses, Patients} from "../../../Api.ts";
 import {useAtom} from "jotai";
-import {DiagnosesAtom} from "../atoms/DiagnosesAtom.tsx";
-import {DiseasesAtom} from "../atoms/DiseasesAtom.tsx";
-import {PatientsAtom} from "../atoms/PatientsAtom.tsx";
+import {DiagnosesAtom} from "../../../atoms/DiagnosesAtom.tsx";
+import {DiseasesAtom} from "../../../atoms/DiseasesAtom.tsx";
+import {PatientsAtom} from "../../../atoms/PatientsAtom.tsx";
 import {useState} from "react";
 
 export default function NewDiagnosisForPatient({currentPatient}: {currentPatient: Patients}) {
@@ -12,14 +12,20 @@ export default function NewDiagnosisForPatient({currentPatient}: {currentPatient
     const [, setPatients] = useAtom(PatientsAtom)
     const [diseaseId, setDiseaseId] = useState<number>(diseases[0].id || 0)
 
+    function diagnose(patient: Patients, diseaseId: number, date: Date) {
+
+    }
+
     return (<>
 
-        <select value={diseaseId}
+        <select className="input w-36 mr-1" value={diseaseId}
          onChange={e => {
              setDiseaseId(Number(e.target.value))}}
         >
             {diseases.map(disease => <option value={disease.id} key={disease.id}>{disease.name}</option>)}
         </select>
-        <div>{JSON.stringify(diseases.find(d => d.id == diseaseId))}</div>
+        <button onClick={() => diagnose(currentPatient, diseaseId, new Date())} className="btn btn-primary">
+            Diagnose {currentPatient.name} with {diseases.find(d => d.id == diseaseId)?.name} at {new Date().toDateString()}
+        </button>
     </>)
 }

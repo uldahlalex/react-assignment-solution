@@ -1,7 +1,7 @@
 import {useAtom} from "jotai";
-import {PatientsAtom} from "../atoms/PatientsAtom.tsx";
+import {PatientsAtom} from "../../atoms/PatientsAtom.tsx";
 import {useNavigate} from "react-router-dom";
-import EnrollPatientModal, {EnrollPatientModalAtom} from "./EnrollPatientModalAtom.tsx";
+import EnrollPatientModal, {EnrollPatientModalAtom} from "../EnrollPatientModalAtom.tsx";
 import React from "react";
 import OpenEnrollPatientFloatingActionButton from "./OpenEnrollPatientFloatingActionButton.tsx";
 

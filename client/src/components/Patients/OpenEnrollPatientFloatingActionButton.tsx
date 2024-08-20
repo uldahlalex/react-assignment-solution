@@ -1,5 +1,5 @@
 import {useAtom} from "jotai/index";
-import {EnrollPatientModalAtom} from "./EnrollPatientModalAtom.tsx";
+import {EnrollPatientModalAtom} from "../EnrollPatientModalAtom.tsx";
 import React from "react";
 
 export default function OpenEnrollPatientFloatingActionButton() {
