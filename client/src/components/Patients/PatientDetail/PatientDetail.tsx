@@ -49,7 +49,7 @@ export default function PatientDetail() {
                                 <tr key={d.id} className={index % 2 === 0 ? "bg-base-200" : ""}>
                                     <th>{index + 1}</th>
                                     <td>{disease ? disease.name : 'Unknown'}</td>
-                                    <td>{new Date(d.diagnosis_date!).toLocaleDateString()}</td>
+                                    <td>{new Date(d.diagnosis_date!).toLocaleString()}</td>
                                 </tr>
                             );
                         })
