@@ -105,7 +105,10 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/diseases"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/diseases"
+              }
             }
           }
         },
@@ -230,7 +233,10 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/diagnoses"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/diseases"
+              }
             }
           }
         },
@@ -361,7 +367,10 @@
           "201": {
             "description": "Created",
             "schema": {
-              "$ref": "#/definitions/patients"
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/diseases"
+              }
             }
           }
         },

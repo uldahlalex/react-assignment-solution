@@ -267,7 +267,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       },
       params: RequestParams = {},
     ) =>
-      this.request<Diseases, any>({
+      this.request<Diseases[], any>({
         path: `/diseases`,
         method: "POST",
         query: query,
@@ -375,7 +375,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       },
       params: RequestParams = {},
     ) =>
-      this.request<Diagnoses, any>({
+      this.request<Diseases[], any>({
         path: `/diagnoses`,
         method: "POST",
         query: query,
@@ -485,7 +485,7 @@ export class Api<SecurityDataType extends unknown> extends HttpClient<SecurityDa
       },
       params: RequestParams = {},
     ) =>
-      this.request<Patients, any>({
+      this.request<Diseases[], any>({
         path: `/patients`,
         method: "POST",
         query: query,
