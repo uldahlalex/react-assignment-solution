@@ -1,6 +1,7 @@
-import {Api} from './Api.ts';
+/// <reference types="vite/client" />
 
-export const baseUrl = 'http://localhost:3000';
+import {Api} from './Api.ts';
+const baseUrl = import.meta.env.VITE_APP_BASE_API_URL
 
 export const http = new Api({
     baseURL: baseUrl,
@@ -8,3 +9,7 @@ export const http = new Api({
         "Prefer": "return=representation"
     }
 });
+
+interface ImportMetaEnv {
+    readonly VITE_APP_BASE_API_URL: string
+}

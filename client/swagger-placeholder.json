@@ -91,30 +91,20 @@
       },
       "post": {
         "parameters": [
-          {
-            "$ref": "#/parameters/body.diseases"
-          },
-          {
-            "$ref": "#/parameters/select"
-          },
-          {
-            "$ref": "#/parameters/preferPost"
-          }
+          { "$ref": "#/parameters/body.diseases" },
+          { "$ref": "#/parameters/select" },
+          { "$ref": "#/parameters/preferReturnFull" }
+
         ],
         "responses": {
           "201": {
+            "description": "Created",
             "schema": {
-                "items": {
-                    "$ref": "#/definitions/diseases"
-                },
-                "type": "array"
-            },
-            "description": "Created"
+              "$ref": "#/definitions/diseases"
+            }
           }
         },
-        "tags": [
-          "diseases"
-        ]
+        "tags": ["diseases"]
       },
       "delete": {
         "parameters": [
@@ -225,9 +215,8 @@
           {
             "$ref": "#/parameters/select"
           },
-          {
-            "$ref": "#/parameters/preferPost"
-          }
+          { "$ref": "#/parameters/preferReturnFull" }
+
         ],
         "responses": {
           "201": {
@@ -359,9 +348,8 @@
           {
             "$ref": "#/parameters/select"
           },
-          {
-            "$ref": "#/parameters/preferPost"
-          }
+          { "$ref": "#/parameters/preferReturnFull" }
+
         ],
         "responses": {
           "201": {
@@ -429,7 +417,6 @@
   "definitions": {
     "diseases": {
       "required": [
-        "id",
         "name"
       ],
       "properties": {
@@ -509,15 +496,19 @@
     },
     "preferReturn": {
       "name": "Prefer",
-      "description": "Preference",
-      "required": false,
-      "enum": [
-        "return=representation",
-        "return=minimal",
-        "return=none"
-      ],
       "in": "header",
-      "type": "string"
+      "description": "Preference for response after a DELETE operation",
+      "required": false,
+      "type": "string",
+      "enum": ["return=representation", "return=minimal", "return=none"]
+    },
+    "preferReturnFull": {
+      "name": "Prefer",
+      "in": "header",
+      "description": "Ensure full entity return on POST",
+      "required": false,
+      "type": "string",
+      "default": "return=representation"
     },
     "preferCount": {
       "name": "Prefer",
