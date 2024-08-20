@@ -46,14 +46,12 @@ docker-compose up
 - Check: It should be possible get all data for a singular patient when navigating to /patients/:id where ID is the patient ID
 - Check: It should be possible to enroll a new patient (create)
 - Check: It should be possible to delete a patient
-- It should be possible to change the name of a patient
-- It should be possible to add new diagnoses to a patient
-- The client application should be deployed to Firebase. If the backend is running locally, opening the deployment should still work with the local backend.
+- Check: It should be possible to change the name of a patient
+-  The client application should be deployed to Firebase. If the backend is running locally, opening the deployment should still work with the local backend.
 
 ## Bonus requirements
+- Check: It should be possible to add new diagnoses to a patient
 - It should be possible to create a new disease which patients may be diagnosed with
-- It should be possible to add a new diagnosis to a patient
-- It should be possible to add new diseases
 
 ## Hard bonus requirements
 - In the patients feed overview (all patients), a number next to the patient name should indicate the number of diagnosis for the patient (hint: It's possible to "join" tables when querying postgREST)
