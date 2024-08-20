@@ -1,16 +1,13 @@
-import {useNavigate, useParams} from "react-router-dom";
+import {useParams} from "react-router-dom";
 import {DiseasesAtom} from "../atoms/DiseasesAtom.tsx";
 import {DiagnosesAtom} from "../atoms/DiagnosesAtom.tsx";
 import {useAtom} from "jotai";
 import {PatientsAtom} from "../atoms/PatientsAtom.tsx";
 import React, {useEffect, useState} from "react";
-import {RouteParams} from "../models/RouteParams.ts";
-import {Diagnoses, Patients} from "../Api.ts";
-import {DiagnoseWithDisease, PatientWithDetails} from "../models/CompoundModels.tsx";
-import {apiClient} from "../apiClient.ts";
-import toast from "react-hot-toast";
+import {Patients} from "../Api.ts";
 import UpdatePatientName from "./UpdatePatientName.tsx";
 import DeletePatientFloatingActionButton from "./DeletePatientFloatingActionButton.tsx";
+import NewDiagnosisForPatient from "./NewDiagnosisForPatient.tsx";
 
 export default function PatientDetail() {
 
@@ -61,6 +58,7 @@ export default function PatientDetail() {
                 </table>
             </div>
             <UpdatePatientName currentPatient={currentPatient} />
+            <NewDiagnosisForPatient currentPatient={currentPatient} />
             <DeletePatientFloatingActionButton currentPatient={currentPatient} />
         </div>
     );
